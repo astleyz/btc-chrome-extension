@@ -3,7 +3,7 @@
   "version": "1.0",
   "manifest_version": 2,
   "description": "The extension helps you to buy or sell coins in one click",
-  "permissions": ["storage"],
+  "permissions": ["<all_urls>", "storage", "tabs"],
   "icons": {
     "16": "images/btc16.png",
     "32": "images/btc32.png",
@@ -12,12 +12,17 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://bitcoin.org/*"],
-      "js": ["./main.js"],
-      "css": ["./main.css"]
+      "matches": ["<all_urls>"],
+      "js": ["./content/main.bundle.js"],
+      "css": ["./content/main.css"]
     }
   ],
+  "background": {
+    "scripts": ["background/background.bundle.js"],
+    "persistent": false
+  },
   "browser_action": {
-    "default_title": "BTC wallet"
+    "default_title": "BTC wallet",
+    "default_icon": "images/btc48.png"
   }
 }

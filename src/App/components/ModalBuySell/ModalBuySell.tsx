@@ -7,8 +7,8 @@ import {
   modalOpen,
   modalClose,
   buttonRadius,
-} from "./ModaBuySell.styled";
-import btcimg from "../../assets/btc128.png";
+} from "./ModalBuySell.styled";
+import btcimg from "../../../assets/btc128.png";
 import Authorization from "../Authorization/Authorization";
 
 interface ModalBuySellProps {
@@ -25,8 +25,12 @@ const ModalBuySell: FC<ModalBuySellProps> = ({ isOpen, toggleModalOpen }) => {
 
   return (
     <Container style={isOpen ? containerOpen : containerClose}>
-      <button style={btn} className="toggleButton" onClick={toggleModalOpen}>
-        <img style={imgStyles} src={btcimg} alt="" />
+      <button
+        style={btn}
+        className="toggleButton"
+        onMouseDown={toggleModalOpen}
+      >
+        <img style={imgStyles} src={btcimg} alt="" draggable={false} />
       </button>
       <div className="modal" style={isOpen ? modalOpen : modalClose}>
         {isAuthorized ? (
